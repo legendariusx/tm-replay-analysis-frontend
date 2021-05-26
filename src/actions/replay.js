@@ -1,0 +1,3 @@
+export const SET_REPLAY = "SET_REPLAY";
+export const REMOVE_REPLAY = "REMOVE_REPLAY";
+export const UPDATE_REPLAY = "UPDATE_REPLAY";

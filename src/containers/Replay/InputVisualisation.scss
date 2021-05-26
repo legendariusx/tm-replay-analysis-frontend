@@ -1,0 +1,111 @@
+.input-visualisation-container {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .iv-controls {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+
+        button {
+            font-size: 1.5em;
+            padding: 0;
+        }
+
+        button:not(:first-child) {
+            margin-left: 10px;
+        }
+    }
+
+    .input-visualisation {
+        width: 300px;
+        height: 100px;
+        display: grid;
+        margin: 0 auto;
+        margin-top: 20px;
+        grid-template-areas:
+            "left accelerate right"
+            "left brake right"
+        ;
+        grid-template-columns: 125px 50px 125px;
+
+        .iv-accelerate {
+            width: 36px;
+            height: 45px;
+            grid-area: accelerate;
+            background-color: #888;
+            margin-bottom: 10px;
+            justify-self: center;
+        }
+
+        .iv-accelerate-accelerating {
+            background-color: rgb(40, 199, 0);
+        }
+
+        .iv-brake {
+            width: 36px;
+            height: 45px;
+            grid-area: brake;
+            background-color: #888;
+            justify-self: center;
+        }
+
+        .iv-brake-braking {
+            background-color: rgb(226, 17, 17);
+        }
+
+        .iv-left-bg {
+            width: 0; 
+            height: 0;
+
+            grid-area: left;
+            justify-self: right;
+            
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-right: 100px solid #888;
+        }
+
+        .iv-left {
+            width: 0; 
+            height: 0;
+
+            grid-area: left;
+            justify-self: right;
+            
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-right: solid rgb(233, 132, 0);
+        }
+
+        .iv-right {
+            width: 0; 
+            height: 0;
+
+            grid-area: right;
+            justify-self: left;
+            
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: solid rgb(233, 132, 0);
+        }
+
+        .iv-right-bg {
+            width: 0; 
+            height: 0;
+
+            grid-area: right;
+            justify-self: left;
+            
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid transparent;
+            border-left: 100px solid #888;
+        }
+    }
+}

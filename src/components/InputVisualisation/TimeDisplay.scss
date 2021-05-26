@@ -1,0 +1,25 @@
+.iv-time-display {
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    border: 2px solid rgb(41, 41, 41);
+    border-radius: 5px;
+    width: 50%;
+
+    display: grid;
+    grid-template-areas: "time-display";
+
+    p {
+        grid-area: time-display;
+        margin: 0;
+        z-index: 2;
+        margin-bottom: 2px;
+    }
+
+    .iv-time-display-progress {
+        grid-area: time-display;
+        height: 100%;
+        background-color: #007bff;
+    }
+}
