@@ -2,24 +2,42 @@
     text-align: center;
     margin: 0 auto;
     margin-top: 20px;
-    padding: 5px;
+    // padding: 5px;
     border: 2px solid rgb(41, 41, 41);
-    border-radius: 5px;
-    width: 50%;
+    border-radius: 2px;
+    width: 40%;
 
     display: grid;
     grid-template-areas: "time-display";
+
+    &:hover .iv-time-display-progress {
+        background-color: #006fe6;
+    }
 
     p {
         grid-area: time-display;
         margin: 0;
         z-index: 2;
         margin-bottom: 2px;
+
+        // Disables text select
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    p:hover {
+        cursor: default;
     }
 
     .iv-time-display-progress {
         grid-area: time-display;
         height: 100%;
         background-color: #007bff;
+
+        transition: 0.1s ease-in-out background-color;
     }
 }

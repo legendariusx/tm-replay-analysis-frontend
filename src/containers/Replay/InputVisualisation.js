@@ -1,9 +1,11 @@
-import { Button } from "@material-ui/core";
 import React from "react";
 import { connect } from "react-redux";
 
 import "./InputVisualisation.scss";
+
 import TimeDisplay from "../../components/InputVisualisation/TimeDisplay";
+import SteeringDisplay from "../../components/InputVisualisation/SteeringDisplay";
+import InputVisualisationControls from "../../components/InputVisualisation/InputVisualisationControls";
 
 class InputVisualisation extends React.Component {
     constructor(props) {
@@ -20,6 +22,13 @@ class InputVisualisation extends React.Component {
             isSteeringLeft: false,
             leftSteeringAmount: 0,
         };
+
+        this.play = this.play.bind(this);
+        this.pause = this.pause.bind(this);
+        this.stop = this.stop.bind(this);
+        this.skip = this.skip.bind(this);
+
+        this.updateInputs = this.updateInputs.bind(this);
     }
 
     play() {
@@ -37,7 +46,6 @@ class InputVisualisation extends React.Component {
         this.setState({
             isPlaying: false,
             interval: null,
-            currentTimestamp: this.state.currentTimestamp + 10
         });
     }
 
@@ -53,7 +61,7 @@ class InputVisualisation extends React.Component {
             rightSteeringAmount: 0,
             isSteeringLeft: false,
             leftSteeringAmount: 0,
-            slowDownPercentage: 0
+            slowDownPercentage: 0,
         });
     }
 
@@ -61,7 +69,7 @@ class InputVisualisation extends React.Component {
         if (amount > 0) {
             this.updateInputs(
                 this.state.currentTimestamp + amount >= this.props.replay.length
-                    ? this.props.replay.length - 1
+                    ? this.props.replay.length
                     : this.state.currentTimestamp + amount
             );
         } else {
@@ -77,7 +85,12 @@ class InputVisualisation extends React.Component {
         const inputs = this.props.replay.inputs;
 
         // Stop replay if end is reached
-        if (currentTimestamp >= this.props.replay.length) this.pause();
+        if (currentTimestamp >= this.props.replay.length) {
+            this.pause();
+            this.setState({
+                currentTimestamp: this.props.replay.length
+            })
+        }
         else {
             // Filters inputs for whether they're happening currently
             // If the input is a single action, the timestamp has to match exactly
@@ -133,60 +146,21 @@ class InputVisualisation extends React.Component {
     }
 
     render() {
-        const replay = this.props.replay ? this.props.replay : {};
+        const {
+            replay
+        } = this.props;
 
         return (
             <div className="input-visualisation-container">
-                <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+                <h3>
                     Input Visualisation
-                </h2>
-                <TimeDisplay currentTimestamp={this.state.currentTimestamp} replayLength={replay.length} />
-                <div className="iv-controls">
-                    <Button
-                        variant="contained"
-                        onClick={() => this.skip(-1000)}
-                        disabled={!this.props.replays.uploadSuccess || this.state.currentTimestamp === 0}
-                    >
-                        <i className="mdi mdi-skip-previous" />
-                    </Button>
-                    <Button
-                        variant="contained"
-                        onClick={() => {
-                            if (!this.state.isPlaying) this.play();
-                            else this.pause();
-                        }}
-                        disabled={!this.props.replays.uploadSuccess || this.state.currentTimestamp >= replay.length - 10}
-                    >
-                        {!this.state.isPlaying ? (
-                            <i className="mdi mdi-play" />
-                        ) : (
-                            <i className="mdi mdi-pause" />
-                        )}
-                    </Button>
-                    <Button
-                        variant="contained"
-                        onClick={() => this.stop()}
-                        disabled={!this.props.replays.uploadSuccess}
-                    >
-                        <i className="mdi mdi-stop" />
-                    </Button>
-                    <Button
-                        variant="contained"
-                        onClick={() => this.skip(1000)}
-                        disabled={!this.props.replays.uploadSuccess || this.state.currentTimestamp >= replay.length - 10}
-                    >
-                        <i className="mdi mdi-skip-next" />
-                    </Button>
-                </div>
+                </h3>
                 <div className="input-visualisation">
                     {/* Left steering display */}
-                    <div className="iv-left-bg"></div>
-                    <div
-                        className="iv-left"
-                        style={{
-                            borderRightWidth: `${this.state.leftSteeringAmount}px`,
-                        }}
-                    ></div>
+                    <SteeringDisplay
+                        direction="left"
+                        steeringPercentage={this.state.leftSteeringAmount}
+                    />
                     {/* Acceleration display */}
                     <div
                         className={`iv-accelerate ${
@@ -195,21 +169,48 @@ class InputVisualisation extends React.Component {
                                 : ""
                         }`}
                     ></div>
+                    <div
+                       className={`iv-accelerate-triangle ${
+                        this.state.isAccelerating
+                            ? "iv-accelerate-triangle-accelerating"
+                            : ""
+                        }`} 
+                    >
+
+                    </div>
                     {/* Brake display */}
                     <div
                         className={`iv-brake ${
                             this.state.isBraking ? "iv-brake-braking" : ""
                         }`}
                     ></div>
-                    {/* Right steering display */}
-                    <div className="iv-right-bg"></div>
                     <div
-                        className="iv-right"
-                        style={{
-                            borderLeftWidth: `${this.state.rightSteeringAmount}px`,
-                        }}
+                       className={`iv-brake-triangle ${
+                        this.state.isBraking
+                            ? "iv-brake-triangle-braking"
+                            : ""
+                        }`} 
                     ></div>
+                    {/* Right steering display */}
+                    <SteeringDisplay
+                        direction="right"
+                        steeringPercentage={this.state.rightSteeringAmount}
+                    />
                 </div>
+                <TimeDisplay
+                    currentTimestamp={this.state.currentTimestamp}
+                    replayLength={replay.length}
+                    updateInputs={this.updateInputs}
+                />
+                <InputVisualisationControls
+                    currentTimestamp={this.state.currentTimestamp}
+                    isPlaying={this.state.isPlaying}
+                    replayLength={replay.length}
+                    play={this.play}
+                    pause={this.pause}
+                    skip={this.skip}
+                    stop={this.stop}
+                />
             </div>
         );
     }

@@ -1,0 +1,47 @@
+.iv-left-bg {
+    width: 0; 
+    height: 0;
+
+    grid-area: left;
+    justify-self: right;
+    
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: 100px solid #888;
+}
+
+.iv-left {
+    width: 0; 
+    height: 0;
+
+    grid-area: left;
+    justify-self: right;
+    
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-right: solid rgb(233, 132, 0);
+}
+
+.iv-right {
+    width: 0; 
+    height: 0;
+
+    grid-area: right;
+    justify-self: left;
+    
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: solid rgb(233, 132, 0);
+}
+
+.iv-right-bg {
+    width: 0; 
+    height: 0;
+
+    grid-area: right;
+    justify-self: left;
+    
+    border-top: 50px solid transparent;
+    border-bottom: 50px solid transparent;
+    border-left: 100px solid #888;
+}

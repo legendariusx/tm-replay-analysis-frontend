@@ -1,3 +1,6 @@
+$accelerating-color: rgb(40, 199, 0);
+$braking-color: rgb(226, 17, 17);
+
 .input-visualisation-container {
     margin: 0 auto;
     margin-top: 30px;
@@ -7,31 +10,20 @@
     flex-direction: column;
     justify-content: center;
 
-    .iv-controls {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: 20px;
-
-        button {
-            font-size: 1.5em;
-            padding: 0;
-        }
-
-        button:not(:first-child) {
-            margin-left: 10px;
-        }
+    h3 {
+        margin: 0 auto;
     }
 
     .input-visualisation {
         width: 300px;
-        height: 100px;
         display: grid;
         margin: 0 auto;
         margin-top: 20px;
         grid-template-areas:
+            ". accelerate-triangle ."
             "left accelerate right"
             "left brake right"
+            ". brake-triangle ."
         ;
         grid-template-columns: 125px 50px 125px;
 
@@ -40,12 +32,31 @@
             height: 45px;
             grid-area: accelerate;
             background-color: #888;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             justify-self: center;
+            align-self: end;
         }
 
         .iv-accelerate-accelerating {
             background-color: rgb(40, 199, 0);
+        }
+
+        .iv-accelerate-triangle {
+            height: 0;
+            width: 0;
+            grid-area: accelerate-triangle;
+
+            justify-self: center;
+            align-self: end;
+
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+  
+            border-bottom: 10px solid #888;
+        }
+
+        .iv-accelerate-triangle-accelerating {
+            border-bottom-color: rgb(40, 199, 0);
         }
 
         .iv-brake {
@@ -54,58 +65,30 @@
             grid-area: brake;
             background-color: #888;
             justify-self: center;
+            margin-top: 5px;
         }
 
         .iv-brake-braking {
             background-color: rgb(226, 17, 17);
         }
 
-        .iv-left-bg {
-            width: 0; 
+        .iv-brake-triangle {
             height: 0;
+            width: 0;
+            grid-area: brake-triangle;
 
-            grid-area: left;
-            justify-self: right;
-            
-            border-top: 50px solid transparent;
-            border-bottom: 50px solid transparent;
-            border-right: 100px solid #888;
+            justify-self: center;
+            align-self: end;
+
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+  
+            border-top: 10px solid #888;
         }
 
-        .iv-left {
-            width: 0; 
-            height: 0;
-
-            grid-area: left;
-            justify-self: right;
-            
-            border-top: 50px solid transparent;
-            border-bottom: 50px solid transparent;
-            border-right: solid rgb(233, 132, 0);
+        .iv-brake-triangle-braking {
+            border-top-color: rgb(226, 17, 17);
         }
 
-        .iv-right {
-            width: 0; 
-            height: 0;
-
-            grid-area: right;
-            justify-self: left;
-            
-            border-top: 50px solid transparent;
-            border-bottom: 50px solid transparent;
-            border-left: solid rgb(233, 132, 0);
-        }
-
-        .iv-right-bg {
-            width: 0; 
-            height: 0;
-
-            grid-area: right;
-            justify-self: left;
-            
-            border-top: 50px solid transparent;
-            border-bottom: 50px solid transparent;
-            border-left: 100px solid #888;
-        }
     }
 }
