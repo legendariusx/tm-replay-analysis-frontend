@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 
 import "./InputVisualisation.scss";
 
-import TimeDisplay from "../../components/InputVisualisation/TimeDisplay";
-import SteeringDisplay from "../../components/InputVisualisation/SteeringDisplay";
-import InputVisualisationControls from "../../components/InputVisualisation/InputVisualisationControls";
-import BinarySpeedDisplay from "../../components/InputVisualisation/BinarySpeedDisplay";
+import TimeDisplay from "../../components/Replay/InputVisualisation/TimeDisplay";
+import SteeringDisplay from "../../components/Replay/InputVisualisation/SteeringDisplay";
+import InputVisualisationControls from "../../components/Replay/InputVisualisation/InputVisualisationControls";
+import BinarySpeedDisplay from "../../components/Replay/InputVisualisation/BinarySpeedDisplay";
 
 class InputVisualisation extends React.Component {
     constructor(props) {
@@ -157,14 +157,12 @@ class InputVisualisation extends React.Component {
                     Input Visualisation
                 </h3>
                 <div className="input-visualisation">
-                    {/* Left steering display */}
                     <SteeringDisplay
                         direction="left"
                         steeringPercentage={this.state.leftSteeringAmount}
                     />
                     <BinarySpeedDisplay type="accelerate" isOn={this.state.isAccelerating} />
                     <BinarySpeedDisplay type="brake" isOn={this.state.isBraking} />
-                    {/* Right steering display */}
                     <SteeringDisplay
                         direction="right"
                         steeringPercentage={this.state.rightSteeringAmount}

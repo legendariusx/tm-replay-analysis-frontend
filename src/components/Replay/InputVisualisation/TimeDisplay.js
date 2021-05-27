@@ -20,7 +20,7 @@ const TimeDisplay = ({ currentTimestamp, replayLength, updateInputs }) => {
         const percent = clickX / trackRef.current.offsetWidth;
         // Since the game runs on 100 ticks, we need to make sure that the timestamp we return % 10 = 0
         // If we were to return 3 for example, the steering display would not work anymore
-        const newTimestamp = Math.round(Math.min(replayLength / 10, Math.max(0, replayLength * percent)) / 10) * 10;
+        const newTimestamp = Math.round(Math.min(replayLength, Math.max(0, replayLength * percent)) / 10) * 10;
         return newTimestamp
     }
 

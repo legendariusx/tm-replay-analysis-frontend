@@ -3,7 +3,6 @@ import React from "react";
 import './BinarySpeedDisplay.scss';
 
 const BinarySpeedDisplay = (props) => {
-console.log('🚀 ~ file: BinarySpeedDisplay.js ~ line 6 ~ BinarySpeedDisplay ~ props', props)
     const {
         type,
         isOn
