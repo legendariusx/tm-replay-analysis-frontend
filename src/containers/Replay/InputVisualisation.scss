@@ -1,6 +1,3 @@
-$accelerating-color: rgb(40, 199, 0);
-$braking-color: rgb(226, 17, 17);
-
 .input-visualisation-container {
     margin: 0 auto;
     margin-top: 30px;
@@ -26,69 +23,5 @@ $braking-color: rgb(226, 17, 17);
             ". brake-triangle ."
         ;
         grid-template-columns: 125px 50px 125px;
-
-        .iv-accelerate {
-            width: 36px;
-            height: 45px;
-            grid-area: accelerate;
-            background-color: #888;
-            margin-bottom: 5px;
-            justify-self: center;
-            align-self: end;
-        }
-
-        .iv-accelerate-accelerating {
-            background-color: rgb(40, 199, 0);
-        }
-
-        .iv-accelerate-triangle {
-            height: 0;
-            width: 0;
-            grid-area: accelerate-triangle;
-
-            justify-self: center;
-            align-self: end;
-
-            border-left: 18px solid transparent;
-            border-right: 18px solid transparent;
-  
-            border-bottom: 10px solid #888;
-        }
-
-        .iv-accelerate-triangle-accelerating {
-            border-bottom-color: rgb(40, 199, 0);
-        }
-
-        .iv-brake {
-            width: 36px;
-            height: 45px;
-            grid-area: brake;
-            background-color: #888;
-            justify-self: center;
-            margin-top: 5px;
-        }
-
-        .iv-brake-braking {
-            background-color: rgb(226, 17, 17);
-        }
-
-        .iv-brake-triangle {
-            height: 0;
-            width: 0;
-            grid-area: brake-triangle;
-
-            justify-self: center;
-            align-self: end;
-
-            border-left: 18px solid transparent;
-            border-right: 18px solid transparent;
-  
-            border-top: 10px solid #888;
-        }
-
-        .iv-brake-triangle-braking {
-            border-top-color: rgb(226, 17, 17);
-        }
-
     }
 }

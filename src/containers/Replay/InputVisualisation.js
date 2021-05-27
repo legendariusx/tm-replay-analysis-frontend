@@ -6,6 +6,7 @@ import "./InputVisualisation.scss";
 import TimeDisplay from "../../components/InputVisualisation/TimeDisplay";
 import SteeringDisplay from "../../components/InputVisualisation/SteeringDisplay";
 import InputVisualisationControls from "../../components/InputVisualisation/InputVisualisationControls";
+import BinarySpeedDisplay from "../../components/InputVisualisation/BinarySpeedDisplay";
 
 class InputVisualisation extends React.Component {
     constructor(props) {
@@ -161,36 +162,8 @@ class InputVisualisation extends React.Component {
                         direction="left"
                         steeringPercentage={this.state.leftSteeringAmount}
                     />
-                    {/* Acceleration display */}
-                    <div
-                        className={`iv-accelerate ${
-                            this.state.isAccelerating
-                                ? "iv-accelerate-accelerating"
-                                : ""
-                        }`}
-                    ></div>
-                    <div
-                       className={`iv-accelerate-triangle ${
-                        this.state.isAccelerating
-                            ? "iv-accelerate-triangle-accelerating"
-                            : ""
-                        }`} 
-                    >
-
-                    </div>
-                    {/* Brake display */}
-                    <div
-                        className={`iv-brake ${
-                            this.state.isBraking ? "iv-brake-braking" : ""
-                        }`}
-                    ></div>
-                    <div
-                       className={`iv-brake-triangle ${
-                        this.state.isBraking
-                            ? "iv-brake-triangle-braking"
-                            : ""
-                        }`} 
-                    ></div>
+                    <BinarySpeedDisplay type="accelerate" isOn={this.state.isAccelerating} />
+                    <BinarySpeedDisplay type="brake" isOn={this.state.isBraking} />
                     {/* Right steering display */}
                     <SteeringDisplay
                         direction="right"

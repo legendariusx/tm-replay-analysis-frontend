@@ -1,0 +1,65 @@
+$accelerating-color: rgb(40, 199, 0);
+$braking-color: rgb(226, 17, 17);
+
+.iv-accelerate {
+    width: 36px;
+    height: 45px;
+    grid-area: accelerate;
+    background-color: #888;
+    margin-bottom: 5px;
+    justify-self: center;
+    align-self: end;
+}
+
+.iv-accelerate-on {
+    background-color: $accelerating-color;
+}
+
+.iv-accelerate-triangle {
+    height: 0;
+    width: 0;
+    grid-area: accelerate-triangle;
+
+    justify-self: center;
+    align-self: end;
+
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+
+    border-bottom: 10px solid #888;
+}
+
+.iv-accelerate-triangle-on {
+    border-bottom-color: $accelerating-color;
+}
+
+.iv-brake {
+    width: 36px;
+    height: 45px;
+    grid-area: brake;
+    background-color: #888;
+    justify-self: center;
+    margin-top: 5px;
+}
+
+.iv-brake-on {
+    background-color: $braking-color;
+}
+
+.iv-brake-triangle {
+    height: 0;
+    width: 0;
+    grid-area: brake-triangle;
+
+    justify-self: center;
+    align-self: end;
+
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+
+    border-top: 10px solid #888;
+}
+
+.iv-brake-triangle-on {
+    border-top-color: $braking-color;
+}

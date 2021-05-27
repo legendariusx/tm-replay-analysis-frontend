@@ -17,7 +17,7 @@ function* uploadFiles(action) {
         for (const res of results) {
             if (res.status === "success") {
                 yield put({ type: SET_REPLAY, value: res })
-                toast.success("Replay successfully analysed!");
+                toast.success("Replay successfully analyzed!");
             } else {
                 toast.error("File upload or analysis failed.");
             }
