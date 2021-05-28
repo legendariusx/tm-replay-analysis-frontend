@@ -66,7 +66,6 @@ const Metrics = (props) => {
     };
 
     const partitions = partitionSteeringEvents();
-    const data = {};
 
     return (
         <div className="metrics-container">
@@ -107,7 +106,7 @@ const Metrics = (props) => {
                             </TableCell>
                         </TableRow>
                         <DonadigoMethod partitions={partitions} timePeriod={timePeriod} noiseThreshold={noiseThreshold} />
-                        <AverageSteeringAmount partitions={partitions} timePeriod={timePeriod} noiseThreshold={noiseThreshold} />
+                        <AverageSteeringAmount partitions={partitions} timePeriod={timePeriod} />
                     </TableBody>
                     <TableFooter></TableFooter>
                 </Table>

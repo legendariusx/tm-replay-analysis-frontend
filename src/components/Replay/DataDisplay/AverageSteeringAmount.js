@@ -3,7 +3,7 @@ import React from "react";
 import { sum } from "lodash";
 
 const AverageSteeringAmount = (props) => {
-    const { partitions, timePeriod, noiseThreshold } = props;
+    const { partitions, timePeriod } = props;
 
     const getAverageSteeringAmountForPartitions = (partitions) => {
         let averageSteeringAmounts = [];
@@ -13,7 +13,6 @@ const AverageSteeringAmount = (props) => {
 
             for (let i = 1; i < partition.length; i++) {
                 const diff = Math.abs(partition[i] - partition[i - 1]);
-                // if (diff <= noiseThreshold) continue;
                 steeringAmounts.push(diff);
             }
 
