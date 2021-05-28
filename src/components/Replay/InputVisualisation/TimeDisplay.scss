@@ -4,7 +4,8 @@
     margin-top: 20px;
     border: 2px solid rgb(41, 41, 41);
     border-radius: 2px;
-    width: 45%;
+
+    min-width: 50%;
 
     display: grid;
     grid-template-areas: "time-display";

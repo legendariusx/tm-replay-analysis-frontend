@@ -1,15 +1,14 @@
 .input-visualisation-container {
-    margin: 0 auto;
-    margin-top: 30px;
-    width: 50%;
+    grid-area: visualisation;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    h3 {
-        margin: 0 auto;
-    }
+    width: 100%;
+
+    margin-top: 10px;
+    padding-left: 30px;
 
     .input-visualisation {
         width: 300px;

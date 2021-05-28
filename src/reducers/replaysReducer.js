@@ -45,7 +45,7 @@ const replays = (state = initState, action) => {
             };
         case REMOVE_REPLAY:
             const filteredReplays = state.replays.filter(
-                (rep) => rep.id === action.value
+                (rep) => rep.id !== action.value
             );
             return {
                 ...state,

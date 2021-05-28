@@ -1,0 +1,10 @@
+.general-information-container {
+    grid-area: general;
+
+    padding-right: 10%;
+    padding: 10px 0 0 30px;
+
+    .general-information-table {
+        border: 3px solid #222;
+    }
+}

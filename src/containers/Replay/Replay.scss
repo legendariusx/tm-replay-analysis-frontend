@@ -1,4 +1,38 @@
 .replay-container {
     display: grid;
-    
+    grid-template-areas: 
+        "header header"
+        "general data"
+        "visualisation data"
+    ;
+    grid-template-columns: 1fr 1fr;
+
+    margin: 0 auto;
+    margin-top: 30px;
+
+    width: 75%;
+    padding-bottom: 20px;
+
+    border: 3px solid #222;
+    border-radius: 3px;
+
+    .replay-header {
+        grid-area: header;
+        padding: 20px 0 0 20px;
+        background-color: #222;
+
+        display: flex;
+        width: 100%;
+
+        justify-content: space-between;
+
+        h3 {
+            margin: 0;
+        }
+
+        .replay-remove {
+            height: 70%;
+            margin: -5px 20px 0 0;
+        }
+    }
 }
