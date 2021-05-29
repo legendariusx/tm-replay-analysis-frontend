@@ -2,6 +2,8 @@ import { TableCell, TableRow } from "@material-ui/core";
 import React from "react";
 import { sum } from "lodash";
 
+import './AverageSteeringAmount.scss';
+
 const AverageSteeringAmount = (props) => {
     const { partitions, timePeriod } = props;
 

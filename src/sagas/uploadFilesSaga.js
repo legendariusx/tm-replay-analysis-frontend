@@ -14,14 +14,24 @@ function* uploadFiles(action) {
 
     try {
         const results = yield call(uploadFileRequest, action.value);
+        let succeeded = 0;
+        let failed = 0;
+
         for (const res of results) {
             if (res.status === "success") {
                 yield put({ type: SET_REPLAY, value: res })
-                toast.success("Replay successfully analyzed!");
+                succeeded++;
             } else {
-                toast.error("File upload or analysis failed.");
+                failed++;
             }
         }
+
+        if (succeeded === 1) toast.success("1 replay successfully analyzed!");
+        else if (succeeded > 1) toast.success(`${succeeded} replays successfully analyzed!`);
+
+        if (failed === 1) toast.error("1 file failed to analyze.");
+        else if (failed > 1) toast.error(`${failed} replays failed to analyze.`);
+
         yield put({ type: SET_FILE_UPLOAD_SUCCESS });
     } catch (e) {
         yield put({ type: SET_FILE_UPLOAD_FAILED, value: e });

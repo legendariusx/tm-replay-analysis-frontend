@@ -14,7 +14,7 @@ const Dropzone = ({ onDrop }) => {
         multiple: true,
         accept: ".Replay.Gbx",
         maxSize: 100000,
-        maxFiles: 5
+        maxFiles: 50
     });
 
     const uploading = false;
