@@ -71,7 +71,7 @@ const DonadigoMethod = (props) => {
                     colSpan="2"
                     style={{ fontSize: "1.25rem" }}
                 >
-                    Donadigo / Wirtual Method
+                    donadigo / Wirtual Method
                 </TableCell>
             </TableRow>
             <TableRow>

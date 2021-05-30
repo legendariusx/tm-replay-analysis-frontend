@@ -26,8 +26,12 @@
 
         justify-content: space-between;
 
-        h3 {
-            margin: 0;
+        .replay-title {
+            display: flex;
+
+            h3 {
+                margin: 0;
+            }
         }
 
         .replay-remove {

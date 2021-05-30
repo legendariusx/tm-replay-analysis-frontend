@@ -1,0 +1,56 @@
+.status-display {
+    background-color: #444;
+    padding: 5px 6px;
+    width: 34px;
+    height: 34px;
+
+    margin-left: 10px;
+    margin-top: 2px;
+
+    display: flex;
+    // justify-content: center;
+    // justify-items: center;
+    align-items: center;
+
+    border: 2px solid #333;
+    border-radius: 5px;
+
+    box-shadow: 4px 4px 4px -2px rgba(0, 0, 0, 0.6);
+
+    i {
+        margin: 0;
+        height: 16px;
+        line-height: 16px;
+    }
+
+    .status-display-message {
+        width: 0;
+        visibility: hidden;
+        overflow: hidden;
+    }
+    
+    &:hover {
+        width: fit-content;
+        
+        .status-display-message {
+            margin-left: 5px;
+            width: fit-content;
+            visibility: visible;
+        }
+    }
+}
+
+.status-display-success {
+    background-color: rgb(0, 165, 0);
+    border-color: rgb(0, 136, 0);
+}
+
+.status-display-partial {
+    background-color: rgb(216, 184, 0);
+    border-color: rgb(185, 158, 0);
+}
+
+.status-display-failed {
+    background-color: rgb(165, 0, 0);
+    border-color: rgb(136, 0, 0);
+}

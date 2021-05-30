@@ -86,15 +86,6 @@ const Metrics = (props) => {
                         <TableRow>
                             <TableCell align="center">
                                 <TextField
-                                    label="Time Period (ms)"
-                                    type="number"
-                                    defaultValue={DEFAULT_TIME_PERIOD}
-                                    placeholder={DEFAULT_TIME_PERIOD}
-                                    onInput={(e) => handleTimePeriodInput(e)}
-                                />
-                            </TableCell>
-                            <TableCell align="center">
-                                <TextField
                                     label="Noise threshold"
                                     type="number"
                                     defaultValue={DEFAULT_NOISE_THRESHOLD}
@@ -104,9 +95,25 @@ const Metrics = (props) => {
                                     }
                                 />
                             </TableCell>
+                            <TableCell align="center">
+                                <TextField
+                                    label="Time Period (ms)"
+                                    type="number"
+                                    defaultValue={DEFAULT_TIME_PERIOD}
+                                    placeholder={DEFAULT_TIME_PERIOD}
+                                    onInput={(e) => handleTimePeriodInput(e)}
+                                />
+                            </TableCell>
                         </TableRow>
-                        <DonadigoMethod partitions={partitions} timePeriod={timePeriod} noiseThreshold={noiseThreshold} />
-                        <AverageSteeringAmount partitions={partitions} timePeriod={timePeriod} />
+                        <DonadigoMethod
+                            partitions={partitions}
+                            timePeriod={timePeriod}
+                            noiseThreshold={noiseThreshold}
+                        />
+                        <AverageSteeringAmount
+                            partitions={partitions}
+                            timePeriod={timePeriod}
+                        />
                     </TableBody>
                     <TableFooter></TableFooter>
                 </Table>

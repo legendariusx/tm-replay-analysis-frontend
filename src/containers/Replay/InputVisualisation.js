@@ -7,6 +7,7 @@ import TimeDisplay from "../../components/Replay/InputVisualisation/TimeDisplay"
 import SteeringDisplay from "../../components/Replay/InputVisualisation/SteeringDisplay";
 import InputVisualisationControls from "../../components/Replay/InputVisualisation/InputVisualisationControls";
 import BinarySpeedDisplay from "../../components/Replay/InputVisualisation/BinarySpeedDisplay";
+import { isUndefined } from "lodash";
 
 class InputVisualisation extends React.Component {
     constructor(props) {
@@ -97,7 +98,7 @@ class InputVisualisation extends React.Component {
             // If the input is a single action, the timestamp has to match exactly
             // For ranged actions, the timestamp has to be inbetween the start and end of the inputs action
             const currentInputs = inputs.filter((input) => {
-                if (input.timestamp) {
+                if (!isUndefined(input.timestamp)) {
                     return input.timestamp === currentTimestamp;
                 } else {
                     return (

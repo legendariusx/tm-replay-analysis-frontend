@@ -15,22 +15,30 @@ function* uploadFiles(action) {
     try {
         const results = yield call(uploadFileRequest, action.value);
         let succeeded = 0;
+        let partial = 0;
         let failed = 0;
 
         for (const res of results) {
             if (res.status === "success") {
                 yield put({ type: SET_REPLAY, value: res })
                 succeeded++;
-            } else {
+            } else if(res.status === "partial") {
+                yield put({ type: SET_REPLAY, value: res })
+                partial++;
+            }
+            else {
                 failed++;
             }
         }
+        
+        if (failed === 1) toast.error("1 replay failed to extract.");
+        else if (failed > 1) toast.error(`${failed} replays failed to extract.`);
 
-        if (succeeded === 1) toast.success("1 replay successfully analyzed!");
-        else if (succeeded > 1) toast.success(`${succeeded} replays successfully analyzed!`);
+        if (partial === 1) toast.warn("1 replay only partially extracted.");
+        else if (partial > 1) toast.warn(`${succeeded} replays only partially extracted.`);
 
-        if (failed === 1) toast.error("1 file failed to analyze.");
-        else if (failed > 1) toast.error(`${failed} replays failed to analyze.`);
+        if (succeeded === 1) toast.success("1 replay successfully extracted!");
+        else if (succeeded > 1) toast.success(`${succeeded} replays successfully extracted!`);
 
         yield put({ type: SET_FILE_UPLOAD_SUCCESS });
     } catch (e) {
